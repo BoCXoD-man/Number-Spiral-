@@ -1,0 +1,45 @@
+# 24/04/22 Время: 16:48 - 18:31
+# Программа, что вертеть хотела числа.
+# Вводим число и создаем пустой массив.
+ent = int(input()) 
+ms = [[0] * ent for i in range(ent)]
+#Заводим переменную счетчик и основной цикл.
+count = 0
+# Заполним первую строку матрицы.
+for i in range(ent):
+    count += 1
+    ms[0][i] = count
+# Введем необходимые переменные для будущего цикла.
+x = 0      # Ось
+y = ent-1  # Ось
+ent -= 1   # Длина первого витка
+
+# Основной цикл.
+while len(ms)**2 != count:
+    # Поехали вниз
+    for k in range(ent): 
+        x += 1
+        count += 1
+        ms[x][y] = count
+    # Поехали влево        
+    for k in range(ent):  
+        y -= 1
+        count += 1
+        ms[x][y] = count
+    # Поехали вверх
+    for k in range(ent-1):  
+        x -= 1
+        count += 1
+        ms[x][y] = count
+    # Поехали вправо
+    for k in range(ent-1):
+        y += 1
+        count += 1
+        ms[x][y] = count
+    # Переход на внутренний цикл этой карусели9
+    ent -= 2
+# Вывод результата
+for i in range(len(ms)):  
+    for j in range(len(ms[i])):
+        print(ms[i][j], end=' ')
+    print()
